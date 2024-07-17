@@ -173,7 +173,7 @@ public class billcontrol {
             bil.dispose();
         });
 
-        // Action Listener for printing the bill
+        // Action Listener for printing the billll
         bil.getbtnprint().addActionListener((e) -> {
            try {
     // Load the JasperDesign from .jrxml file
