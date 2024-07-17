@@ -1,0 +1,98 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="billprint" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b9d115c5-7c3e-48b7-bd9f-05b6b44c74d7">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="MYSQL"/>
+	<query language="SQL"><![CDATA[SELECT * FROM cart]]></query>
+	<field name="item_code" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="item_code"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_code"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cart"/>
+	</field>
+	<field name="item_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.label" value="item_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cart"/>
+	</field>
+	<field name="qty" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="qty"/>
+		<property name="com.jaspersoft.studio.field.label" value="qty"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cart"/>
+	</field>
+	<field name="price" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="price"/>
+		<property name="com.jaspersoft.studio.field.label" value="price"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cart"/>
+	</field>
+	<variable name="total_sum" calculation="Sum" class="java.lang.Double">
+		<expression><![CDATA[$F{price}]]></expression>
+	</variable>
+	<background splitType="Stretch"/>
+	<title height="94" splitType="Stretch">
+		<element kind="staticText" uuid="01617dc6-8ae8-4c3d-8e74-edd0783d164d" x="161" y="24" width="260" height="20" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[YANTHAMPALAWA JUNCTION]]></text>
+		</element>
+		<element kind="staticText" uuid="e749f583-7560-45e2-a5ba-593c75c3803d" x="163" y="44" width="260" height="20" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[KURUNEGALA]]></text>
+		</element>
+		<element kind="staticText" uuid="2000a369-222e-4fc8-beb2-016dc5a517aa" x="163" y="65" width="260" height="20" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[0772343356 / 0701111522]]></text>
+		</element>
+		<element kind="staticText" uuid="adb1df33-cb17-4141-a569-358fbe1a2752" x="166" y="1" width="249" height="30" fontSize="19.0" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[ ~MAX 'S RESTAURANT~]]></text>
+		</element>
+	</title>
+	<pageHeader height="40" splitType="Stretch">
+		<element kind="textField" uuid="9b49821d-b73c-4fb3-90eb-45214e4809c8" x="-20" y="0" width="150" height="30" fontSize="14.0" pattern="MMMMM dd, yyyy">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+		<element kind="textField" uuid="b9f5f905-b574-4799-b8df-2d8f061b7904" x="440" y="1" width="130" height="30" fontSize="14.0" pattern="HH:mm">
+			<expression><![CDATA[new java.util.Date()]]></expression>
+		</element>
+	</pageHeader>
+	<columnHeader height="46" splitType="Stretch">
+		<element kind="staticText" uuid="5a04f0e2-36c6-43c5-bb20-38011e4122f2" x="-10" y="1" width="50" height="34" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Code]]></text>
+		</element>
+		<element kind="staticText" uuid="d76a71b6-f54d-41b0-b466-fb4fd3b53122" x="70" y="1" width="106" height="34" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Item Name]]></text>
+		</element>
+		<element kind="staticText" uuid="970f5ccd-1616-4870-bbfd-113189dcc884" x="277" y="1" width="50" height="34" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Qty]]></text>
+		</element>
+		<element kind="staticText" uuid="e46af049-0690-4d87-bc69-d96ac78ee3ee" x="460" y="0" width="50" height="34" fontSize="16.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[Price]]></text>
+		</element>
+		<element kind="line" uuid="4ad8712a-92ab-4624-8af5-97b7439e0297" x="-22" y="40" width="599" height="1">
+			<pen lineWidth="1.0"/>
+		</element>
+	</columnHeader>
+	<detail>
+		<band height="43" splitType="Stretch">
+			<element kind="textField" uuid="4eb52a11-e613-42b5-abd0-65bf7e41f4d7" x="-11" y="3" width="60" height="36" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{item_code}]]></expression>
+			</element>
+			<element kind="textField" uuid="4c0b2921-9a5b-4c68-ad54-5662b4489fd8" x="76" y="10" width="170" height="26" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{item_name}]]></expression>
+			</element>
+			<element kind="textField" uuid="8b0770ed-3e47-4156-aca6-d9752f13e3e5" x="280" y="4" width="60" height="31" fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$F{qty}]]></expression>
+			</element>
+			<element kind="textField" uuid="29b1632e-6eb5-4ac8-ba31-1ce48691115d" x="460" y="3" width="60" height="31" fontSize="12.0" vTextAlign="Middle">
+				<expression><![CDATA[$F{price}]]></expression>
+			</element>
+		</band>
+	</detail>
+	<columnFooter height="45" splitType="Stretch"/>
+	<pageFooter height="54" splitType="Stretch"/>
+	<summary height="55" splitType="Stretch">
+		<element kind="staticText" uuid="5d478cc4-21f5-46ac-bf45-a4c03427fd95" x="362" y="20" width="64" height="28" fontSize="18.0" bold="true">
+			<text><![CDATA[Total =]]></text>
+		</element>
+		<element kind="textField" uuid="69b16359-91ef-4094-acf0-e195bc9b96ba" x="427" y="15" width="100" height="30" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+			<expression><![CDATA[$V{total_sum}]]></expression>
+		</element>
+		<element kind="line" uuid="3d4a2e2c-eaa6-48d0-a15c-37e79d674dce" x="-20" y="15" width="593" height="1">
+			<pen lineWidth="1.0"/>
+		</element>
+	</summary>
+</jasperReport>
