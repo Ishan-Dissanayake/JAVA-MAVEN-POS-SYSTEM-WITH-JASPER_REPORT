@@ -1,3 +1,4 @@
+store\itemupdate$3.class
 customer\customerviwe$1.class
 store\addcontrol.class
 cart\bill$3.class
@@ -17,6 +18,7 @@ log\logviwe$3.class
 cart\bill$4.class
 store\storefront$1.class
 store\itemupdatecontrol.class
+store\itemupdatecontrol$1.class
 store\itemupdate.class
 customer\custupdatecontrol.class
 store\storecontrol.class
@@ -40,6 +42,7 @@ log\logmodel.class
 customer\custfrontcontroller.class
 home\front.class
 cart\cartfront.class
+store\itemupdate$2.class
 home\homecontrol.class
 home\connection.class
 cart\bill$2.class

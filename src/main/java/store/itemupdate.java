@@ -7,6 +7,13 @@ package store;
 import customer.*;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.DefaultListModel;
+
+import javax.swing.JList;
+import javax.swing.JTable;
+
+import javax.swing.JTextField;
+
 
 /**
  *
@@ -17,8 +24,22 @@ public class itemupdate extends javax.swing.JFrame {
     /**
      * Creates new form custupdate
      */
+      private DefaultListModel<String> listModel;
+
     public itemupdate() {
         initComponents();
+        listModel = new DefaultListModel<>();
+        jList1.setModel(listModel);
+        // Add ListSelectionListener to jList1
+        jList1.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                String selectedValue = jList1.getSelectedValue();
+                if (selectedValue != null) {
+                    txtsrchitem.setText(selectedValue);
+                }
+            }
+        });
+        
     }
 
     /**
@@ -44,126 +65,81 @@ public class itemupdate extends javax.swing.JFrame {
         btndelete = new javax.swing.JButton();
         txtcost = new javax.swing.JTextField();
         lblcusemail1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(450, 250));
         setLocationByPlatform(true);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnupdate.setBackground(new java.awt.Color(102, 255, 255));
         btnupdate.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnupdate.setText("Update ");
+        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(391, 372, 91, 36));
+        getContentPane().add(txtupname, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 174, 285, 31));
 
         lblcusname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblcusname.setText("Item Name:");
+        getContentPane().add(lblcusname, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, 139, 31));
+        getContentPane().add(txtupqty, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 218, 285, 31));
 
         lblcustp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblcustp.setText(" Item Quantity:");
+        getContentPane().add(lblcustp, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 222, 139, -1));
+        getContentPane().add(txtupprice, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 320, 285, 34));
 
         btnclose.setBackground(java.awt.Color.red);
         btnclose.setFont(new java.awt.Font("Segoe UI Light", 0, 24)); // NOI18N
         btnclose.setForeground(new java.awt.Color(255, 255, 255));
         btnclose.setText("X");
+        getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 0, -1, -1));
 
         lblcusemail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblcusemail.setText("Price");
+        getContentPane().add(lblcusemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 318, 139, 36));
+        getContentPane().add(txtsrchitem, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 201, 31));
 
         lblcusname1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblcusname1.setText(" Item Code:");
+        lblcusname1.setText(" Item Name:");
+        getContentPane().add(lblcusname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 102, 39));
 
         btnsrch.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btnsrch.setText("Search");
+        btnsrch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsrchActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnsrch, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, 36));
 
         btndelete.setBackground(new java.awt.Color(102, 255, 255));
         btndelete.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         btndelete.setText("Delete");
+        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 372, 82, 36));
+        getContentPane().add(txtcost, new org.netbeans.lib.awtextra.AbsoluteConstraints(278, 267, 285, 34));
 
         lblcusemail1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblcusemail1.setText("Cost");
+        getContentPane().add(lblcusemail1, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 267, 139, 36));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnclose, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnupdate)
-                        .addGap(18, 18, 18)
-                        .addComponent(btndelete)
-                        .addGap(51, 51, 51))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(lblcustp, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtupqty, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(lblcusname, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(txtupname, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(lblcusname1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtsrchitem, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnsrch))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblcusemail, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(txtupprice, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblcusemail1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(73, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnclose)
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtsrchitem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblcusname1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnsrch, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblcusname, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtupname, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(lblcustp))
-                    .addComponent(txtupqty, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtcost, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblcusemail1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblcusemail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(txtupprice, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnupdate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(152, Short.MAX_VALUE))
-        );
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(jList1);
+
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, 290, 100));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnsrchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsrchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsrchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +182,8 @@ public class itemupdate extends javax.swing.JFrame {
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnsrch;
     private javax.swing.JButton btnupdate;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblcusemail;
     private javax.swing.JLabel lblcusemail1;
     private javax.swing.JLabel lblcusname;
@@ -218,6 +196,17 @@ public class itemupdate extends javax.swing.JFrame {
     private javax.swing.JTextField txtupqty;
     // End of variables declaration//GEN-END:variables
 
+        public JTextField getcode() {
+        return txtsrchitem;
+    }
+         public JList<String> getJList() {
+        return jList1;
+    }
+          public DefaultListModel<String> getListModel() {
+        return listModel;
+    }
+
+    
     public JButton getBtncus() {
         return btnupdate;
     }

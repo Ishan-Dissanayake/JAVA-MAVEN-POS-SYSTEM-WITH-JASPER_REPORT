@@ -8,7 +8,10 @@ import customer.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -20,9 +23,37 @@ public class itemupdatecontrol {
     public itemupdatecontrol(){
         cup =new itemupdate();
         cup.setVisible(true);
+        Connection con=conn.connectdb();
+          cup.getcode().getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                updateSuggestions();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                updateSuggestions();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                updateSuggestions();
+            }
+
+            private void updateSuggestions() {
+                String text = cup.getcode().getText();
+                if (text.isEmpty()) {
+                    cup.getListModel().clear();
+                    return;
+                }
+                ArrayList<String> suggestions = fetchSuggestions(text,con);
+                cup.getListModel().clear();
+                for (String suggestion : suggestions) {
+                    cup.getListModel().addElement(suggestion);
+                }
+            }
+        });
+        
         
         cup.getserch().addActionListener((e)->{
-        Connection con=conn.connectdb();
+      
         String id=cup.getsrchnme().getText();
         try {
             
@@ -31,7 +62,7 @@ public class itemupdatecontrol {
             
             
                 Statement stmt=con.createStatement();
-            ResultSet result=stmt.executeQuery("Select * from items where item_code='"+id+"'");
+            ResultSet result=stmt.executeQuery("Select * from items where item_name='"+id+"'");
             if(result.next()){
                 cup.getupname().setText(result.getString(2));
                 cup.getuptp().setText(result.getString(3));
@@ -54,7 +85,7 @@ public class itemupdatecontrol {
          cup.getBtncus().addActionListener((e)->{
         
         String id1=cup.getsrchnme().getText();
-        Connection con=conn.connectdb();
+       // Connection con=conn.connectdb();
             
             String name1=cup.getupname().getText();
             int qt1=Integer.parseInt(cup.getuptp().getText());
@@ -112,4 +143,19 @@ public class itemupdatecontrol {
     
     
 }
+    private ArrayList<String> fetchSuggestions(String text, Connection con1) {
+        ArrayList<String> suggestions = new ArrayList<>();
+        try {
+            Statement stmt = con1.createStatement();
+            String query = "SELECT item_name FROM items WHERE item_name LIKE '%" + text + "%'";
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                suggestions.add(rs.getString("item_name"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return suggestions;
+    }
+    
 }

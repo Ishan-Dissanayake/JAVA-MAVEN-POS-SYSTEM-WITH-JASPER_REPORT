@@ -74,9 +74,10 @@ public class custfront extends javax.swing.JFrame {
         getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(609, 0, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/abstract.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 700));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 700, 710));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**

@@ -37,8 +37,8 @@ public class front extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 0, 102));
@@ -65,7 +65,7 @@ public class front extends javax.swing.JFrame {
 
         btneco.setBackground(new java.awt.Color(204, 204, 255));
         btneco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-economy-96.png"))); // NOI18N
-        getContentPane().add(btneco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 10, 82, 71));
+        getContentPane().add(btneco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 1, 90, 80));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Store");
@@ -83,14 +83,16 @@ public class front extends javax.swing.JFrame {
         jLabel2.setText("Customer");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/abstract.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 930));
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 102), 1, true));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 710));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/abstract.jpg"))); // NOI18N
+        jPanel1.add(jLabel5);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 890, 720));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncusActionPerformed
