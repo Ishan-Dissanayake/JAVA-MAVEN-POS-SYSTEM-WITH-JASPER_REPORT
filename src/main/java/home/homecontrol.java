@@ -4,6 +4,8 @@
  */
 package home;
 
+import Expen.Expen;
+import Expen.expencontrol;
 import cart.billcontrol;
 import customer.custfrontcontroller;
 import economy.ecocontroller;
@@ -46,7 +48,12 @@ public class homecontrol {
             
           ecocontroller bil=new ecocontroller();
             
-        }); 
+        });
+         fr.btnexpen().addActionListener((e)->{
+            
+          expencontrol exp=new expencontrol();
+            
+        });     
         
     }
     

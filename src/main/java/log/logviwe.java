@@ -4,6 +4,8 @@
  */
 package log;
 
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -18,6 +20,23 @@ public class logviwe extends javax.swing.JFrame {
      */
     public logviwe() {
         initComponents();
+       
+        txtusername.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                     txtpw.requestFocus();
+                }
+            }
+        });
+         txtpw.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btnlog.doClick();
+                }
+            }
+        });
     }
 
     /**
@@ -29,13 +48,13 @@ public class logviwe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblunme = new javax.swing.JLabel();
-        lblunme1 = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
         txtpw = new javax.swing.JPasswordField();
         btnlog = new javax.swing.JButton();
-        chekpw = new javax.swing.JCheckBox();
+        lblunme = new javax.swing.JLabel();
+        lblunme1 = new javax.swing.JLabel();
         btnclose = new javax.swing.JButton();
+        chekpw = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -43,15 +62,12 @@ public class logviwe extends javax.swing.JFrame {
         setBackground(new java.awt.Color(153, 153, 255));
         setLocation(new java.awt.Point(335, 110));
         setLocationByPlatform(true);
+        addWindowStateListener(new java.awt.event.WindowStateListener() {
+            public void windowStateChanged(java.awt.event.WindowEvent evt) {
+                formWindowStateChanged(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblunme.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        lblunme.setText("User Name :");
-        getContentPane().add(lblunme, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 115, 116, 40));
-
-        lblunme1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        lblunme1.setText("Password :");
-        getContentPane().add(lblunme1, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 155, 102, 40));
         getContentPane().add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 125, 211, -1));
         getContentPane().add(txtpw, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 165, 211, -1));
 
@@ -63,15 +79,20 @@ public class logviwe extends javax.swing.JFrame {
                 btnlogActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlog, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 235, 73, -1));
-
-        chekpw.setText("Show Password");
-        chekpw.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chekpwActionPerformed(evt);
+        btnlog.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnlogKeyPressed(evt);
             }
         });
-        getContentPane().add(chekpw, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 195, 141, -1));
+        getContentPane().add(btnlog, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 235, 73, -1));
+
+        lblunme.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblunme.setText("User Name :");
+        getContentPane().add(lblunme, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 115, 116, 40));
+
+        lblunme1.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblunme1.setText("Password :");
+        getContentPane().add(lblunme1, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 155, 102, 40));
 
         btnclose.setBackground(java.awt.Color.red);
         btnclose.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -82,6 +103,14 @@ public class logviwe extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnclose, new org.netbeans.lib.awtextra.AbsoluteConstraints(657, 235, 93, -1));
+
+        chekpw.setText("Show Password");
+        chekpw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chekpwActionPerformed(evt);
+            }
+        });
+        getContentPane().add(chekpw, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 195, 141, -1));
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
@@ -127,6 +156,20 @@ public class logviwe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btncloseActionPerformed
 
+    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowStateChanged
+
+    private void btnlogKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnlogKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnlogKeyPressed
+
+    private void textFieldKeyPressed(java.awt.event.KeyEvent evt) {                                  
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            getBtnlog();
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -29,15 +29,17 @@ public class front extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         btncus = new javax.swing.JButton();
         btnstore = new javax.swing.JButton();
-        btncart = new javax.swing.JButton();
-        btneco = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btncart = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        btneco = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        btnexpen = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,6 +48,15 @@ public class front extends javax.swing.JFrame {
         setLocationByPlatform(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 102), 1, true));
+        jPanel1.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel2.setText("Customer");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(30, 100, 100, 26);
+
         btncus.setBackground(new java.awt.Color(204, 204, 255));
         btncus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-circled-user-male-skin-type-7-96.png"))); // NOI18N
         btncus.addActionListener(new java.awt.event.ActionListener() {
@@ -53,43 +64,54 @@ public class front extends javax.swing.JFrame {
                 btncusActionPerformed(evt);
             }
         });
-        getContentPane().add(btncus, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 81, 71));
+        jPanel1.add(btncus);
+        btncus.setBounds(30, 20, 80, 70);
 
         btnstore.setBackground(new java.awt.Color(204, 204, 255));
         btnstore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-store-96.png"))); // NOI18N
-        getContentPane().add(btnstore, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 82, 71));
-
-        btncart.setBackground(new java.awt.Color(204, 204, 255));
-        btncart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-cart-96.png"))); // NOI18N
-        getContentPane().add(btncart, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 80, 71));
-
-        btneco.setBackground(new java.awt.Color(204, 204, 255));
-        btneco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-economy-96.png"))); // NOI18N
-        getContentPane().add(btneco, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 1, 90, 80));
+        jPanel1.add(btnstore);
+        btnstore.setBounds(160, 20, 82, 71);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Store");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 80, 30));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(170, 100, 80, 30);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel3.setText("Economy");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 101, 30));
+        btncart.setBackground(new java.awt.Color(204, 204, 255));
+        btncart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-cart-96.png"))); // NOI18N
+        jPanel1.add(btncart);
+        btncart.setBounds(300, 20, 80, 71);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel4.setText("Cart");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 80, 80, -1));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(330, 100, 80, 26);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel2.setText("Customer");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
+        btneco.setBackground(new java.awt.Color(204, 204, 255));
+        btneco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-economy-96.png"))); // NOI18N
+        jPanel1.add(btneco);
+        btneco.setBounds(450, 20, 90, 70);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 102), 1, true));
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel3.setText("Economy");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(440, 100, 101, 30);
+
+        btnexpen.setBackground(new java.awt.Color(204, 204, 255));
+        btnexpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons8-cost-64.png"))); // NOI18N
+        jPanel1.add(btnexpen);
+        btnexpen.setBounds(610, 20, 90, 70);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel6.setText("Expenditures");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(590, 100, 140, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/abstract.jpg"))); // NOI18N
         jPanel1.add(jLabel5);
+        jLabel5.setBounds(-290, -40, 1824, 1216);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 890, 720));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 720));
 
         pack();
         setLocationRelativeTo(null);
@@ -139,12 +161,14 @@ public class front extends javax.swing.JFrame {
     private javax.swing.JButton btncart;
     private javax.swing.JButton btncus;
     private javax.swing.JButton btneco;
+    private javax.swing.JButton btnexpen;
     private javax.swing.JButton btnstore;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 public JButton getBtncus() {
@@ -158,6 +182,9 @@ public JButton getbtnstore() {
     }
     public JButton btneco() {
         return btneco;
+    }
+     public JButton btnexpen() {
+        return btnexpen;
     }
     
     

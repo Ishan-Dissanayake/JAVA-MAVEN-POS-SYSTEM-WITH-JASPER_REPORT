@@ -11,8 +11,11 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -75,13 +78,38 @@ public class billcontrol {
         
         // Action Listener for adding items to cart
         bil.getbtnsrch().addActionListener((e) -> {
-            try {
-                String searchcode = (bil.getcode().getText());
-                int qt = Integer.parseInt(bil.gettxtqty().getText());
+           
+         try {
+        String searchcode = bil.getcode().getText();
+        int qt = Integer.parseInt(bil.gettxtqty().getText());
 
-                Statement stmt1 = con1.createStatement();
-                ResultSet reslt = stmt1.executeQuery("select * from items where item_name='" + searchcode + "'");
-                while (reslt.next()) {
+        Statement stmt1 = con1.createStatement();
+        ResultSet reslt = stmt1.executeQuery("select * from items where item_name='" + searchcode + "'");
+          if (searchcode.startsWith("0")) {
+            // If no result found, get the price from the user input
+            double price = Double.parseDouble(bil.getprice().getText());
+            double amount = price * qt;
+            
+            // Add to cart table
+            String query = "insert into cart(item_code,item_name,qty,price) values('0','" + searchcode + "'," + qt + "," + amount + ")";
+            stmt1.executeUpdate(query);
+            
+            // Add to summary table
+            String query3 = "insert into summary(item_code,item_name,qty,cost,price) values('0','" + searchcode + "'," + qt + ",0," + amount + ")";
+            stmt1.executeUpdate(query3);
+            
+            // Refresh cart table display
+            refreshCartTable(con1);
+            
+            // Calculate total
+            calculateTotal(con1);
+            
+            bil.getcode().setText("");
+            bil.gettxtqty().setText("");
+            bil.getprice().setText("");
+            return;
+        }
+     while (reslt.next()) {
                     String code1 = reslt.getString(1);
                     String name1 = reslt.getString(2);
                     String qty1 = reslt.getString(3);
@@ -142,6 +170,7 @@ public class billcontrol {
                     bil.gettot().setText(Double.toString(tot));
                     bil.getcode().setText("");
                     bil.gettxtqty().setText("");
+                    bil.getprice().setText("");
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Can not execute the operation");
@@ -177,7 +206,7 @@ public class billcontrol {
         bil.getbtnprint().addActionListener((e) -> {
            try {
     // Load the JasperDesign from .jrxml file
-    String reportPath = "C:\\Users\\ASUS\\Downloads\\Compressed\\eadcw-20240708T213253Z-001\\eadcw\\src\\main\\java\\cart\\report2.jrxml";
+    String reportPath = "src\\main\\java\\cart\\report2.jrxml";
     JasperDesign jdesign = JRXmlLoader.load(reportPath);
 
     // Set the SQL query
@@ -194,10 +223,34 @@ public class billcontrol {
 
     // Print the report directly to the default printer
     JasperPrintManager.printReport(Jprint, false);
+    
+     Statement stmt8 = con1.createStatement();
+                String query8 = "TRUNCATE TABLE cart";
+                stmt8.executeUpdate(query8);
+                
+                  // Refresh cart table display
+                    DefaultTableModel model = (DefaultTableModel) bil.getcart().getModel();
+                    model.setRowCount(0);
+
+                    Statement stmt5 = con1.createStatement();
+                    ResultSet reslt1 = stmt5.executeQuery("select * from cart");
+                    while (reslt1.next()) {
+                        String code = reslt1.getString("item_code");
+                        String name = reslt1.getString("item_name");
+                        String qty = reslt1.getString("qty");
+                        String price = reslt1.getString("price");
+
+                        String tbldata[] = {code, name, qty, price};
+                        DefaultTableModel tblModel1 = (DefaultTableModel) bil.getcart().getModel();
+
+                        tblModel1.addRow(tbldata);
+                    }
 } catch (JRException ex) {
     ex.printStackTrace();
     JOptionPane.showMessageDialog(null, "Error printing the bill.");
-}
+}           catch (SQLException ex) {
+                Logger.getLogger(billcontrol.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
     }
 
@@ -229,4 +282,42 @@ public class billcontrol {
         }
         return suggestions;
     }
+    
+// Method to refresh cart table display
+private void refreshCartTable(Connection con1) {
+    try {
+        DefaultTableModel model = (DefaultTableModel) bil.getcart().getModel();
+        model.setRowCount(0);
+
+        Statement stmt5 = con1.createStatement();
+        ResultSet reslt1 = stmt5.executeQuery("select * from cart");
+        while (reslt1.next()) {
+            String code = reslt1.getString("item_code");
+            String name = reslt1.getString("item_name");
+            String qty = reslt1.getString("qty");
+            String price = reslt1.getString("price");
+
+            String tbldata[] = {code, name, qty, price};
+            DefaultTableModel tblModel1 = (DefaultTableModel) bil.getcart().getModel();
+
+            tblModel1.addRow(tbldata);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+// Method to calculate total
+private void calculateTotal(Connection con1) {
+    try {
+        Statement stmtTotal = con1.createStatement();
+        ResultSet rsTotal = stmtTotal.executeQuery("SELECT SUM(price) FROM cart");
+        if (rsTotal.next()) {
+            tot = rsTotal.getDouble(1);
+        }
+        bil.gettot().setText(Double.toString(tot));
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
 }
