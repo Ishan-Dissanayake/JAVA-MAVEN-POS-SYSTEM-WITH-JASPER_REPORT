@@ -74,7 +74,7 @@ public class bill extends javax.swing.JFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                    txtprice.requestFocus();
-                }else if((e.getKeyCode() == KeyEvent.VK_P) && ((e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) != 0)) {
+                }else if((e.getKeyCode() ==  KeyEvent.VK_P && e.isControlDown()) && ((e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) != 0)) {
                     btnprint.doClick();
                 }
             }
@@ -85,7 +85,7 @@ public class bill extends javax.swing.JFrame {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                      txtqty.requestFocus();
-                }else if((e.getKeyCode() == KeyEvent.VK_P) && ((e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) != 0)) {
+                }else if((e.getKeyCode() ==  KeyEvent.VK_P && e.isControlDown() ) && ((e.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) != 0)) {
                     btnprint.doClick();
                 }
             }
@@ -213,6 +213,11 @@ public class bill extends javax.swing.JFrame {
         btnsrch.setBackground(new java.awt.Color(255, 153, 0));
         btnsrch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnsrch.setText("Add");
+        btnsrch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsrchActionPerformed(evt);
+            }
+        });
 
         lblcode1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblcode1.setText("QTY:");
@@ -337,6 +342,10 @@ public class bill extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
+
+    private void btnsrchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsrchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnsrchActionPerformed
 
     /**
      * @param args the command line arguments

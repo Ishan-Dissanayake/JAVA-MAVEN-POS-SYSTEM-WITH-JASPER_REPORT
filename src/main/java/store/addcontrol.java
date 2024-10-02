@@ -16,7 +16,7 @@ public class addcontrol {
         addi = new additem();
         addi.setVisible(true);
         con = conn.connectdb();
-
+        //get add item
         addi.getadditm().addActionListener((e) -> {
             int code = Integer.parseInt(addi.getitemcode().getText());
             String name = addi.getitemname().getText();
